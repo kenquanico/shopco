@@ -31,7 +31,7 @@ npm install
 npm run dev
 ```
 
-The defaults expect the frontend at `http://localhost:5173` and Laravel at `http://localhost:8000`. Keep `FRONTEND_URL`, `SANCTUM_STATEFUL_DOMAINS`, `SESSION_DOMAIN`, and `VITE_API_URL` aligned if those addresses change.
+The defaults expect Laravel at `http://127.0.0.1:8000`. During local development, Vite proxies `/api` and `/sanctum` to Laravel so authentication cookies remain same-origin. Leave `VITE_API_URL` blank locally; set it to the deployed Laravel origin in production.
 
 ## Verification
 
