@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { Menu, Search, ShoppingCart, UserRound, X } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
 import { cart } from '@/stores/cart'
+import { auth } from '@/stores/auth'
 import logo from '@/assets/shopco.svg'
 
 const router = useRouter()
@@ -18,13 +19,18 @@ const submitSearch = () => {
   if (!search.value.trim()) return
   router.push({ path: '/search', query: { q: search.value } })
 }
+const logout = async () => {
+  mobileOpen.value = false
+  await auth.logout()
+  await router.push('/login')
+}
 </script>
 
 <template>
   <div class="min-h-screen bg-white">
     <div class="bg-black py-2.5 text-center text-xs text-white sm:text-sm">
       Sign up and get 20% off your first order.
-      <button class="ml-1 font-medium underline underline-offset-2">Sign Up Now</button>
+      <RouterLink to="/register" class="ml-1 font-medium underline underline-offset-2">Sign Up Now</RouterLink>
     </div>
 
     <header class="border-b border-black/10 bg-white">
@@ -47,7 +53,7 @@ const submitSearch = () => {
             <ShoppingCart :size="23" />
             <span v-if="cart.count.value" class="absolute -right-2.5 -top-2.5 grid h-4 min-w-4 place-items-center rounded-full bg-black px-1 text-[9px] text-white">{{ cart.count.value }}</span>
           </RouterLink>
-          <button aria-label="Account"><UserRound :size="23" /></button>
+          <RouterLink :to="auth.isAuthenticated ? '/account' : '/login'" :aria-label="auth.isAuthenticated ? 'Account' : 'Login'"><UserRound :size="23" /></RouterLink>
         </div>
       </div>
     </header>
@@ -62,6 +68,14 @@ const submitSearch = () => {
           <RouterLink to="/">Home</RouterLink><RouterLink to="/category/casual">Shop</RouterLink>
           <RouterLink to="/category/sale">On Sale</RouterLink><a href="/#new-arrivals">New Arrivals</a>
           <a href="/#brands">Brands</a><RouterLink to="/cart">Cart</RouterLink>
+          <template v-if="auth.isAuthenticated">
+            <RouterLink to="/account">Account</RouterLink>
+            <button class="w-fit text-left" @click.stop="logout">Logout</button>
+          </template>
+          <template v-else>
+            <RouterLink to="/login">Login</RouterLink>
+            <RouterLink to="/register">Register</RouterLink>
+          </template>
         </nav>
       </aside>
     </div>
