@@ -7,6 +7,7 @@ import ProductView from './views/ProductView.vue'
 import CartView from './views/CartView.vue'
 import CheckoutView from './views/CheckoutView.vue'
 import SearchView from './views/SearchView.vue'
+import FooterPageView from './views/FooterPageView.vue'
 import './style.css'
 
 const router = createRouter({
@@ -19,6 +20,7 @@ const router = createRouter({
     { path: '/cart', component: CartView },
     { path: '/checkout', component: CheckoutView },
     { path: '/search', component: SearchView },
+    { path: '/info/:slug', component: FooterPageView },
   ],
 })
 

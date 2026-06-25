@@ -2,11 +2,23 @@
 import { ArrowLeft, ArrowRight, BadgeCheck } from 'lucide-vue-next'
 import ProductSection from '@/components/ProductSection.vue'
 import { products } from '@/data/products'
+import versaceLogo from '@/assets/brands/versace.svg'
+import zaraLogo from '@/assets/brands/zara.svg'
+import gucciLogo from '@/assets/brands/gucci.svg'
+import pradaLogo from '@/assets/brands/prada.svg'
+import calvinKleinLogo from '@/assets/brands/calvin-klein.svg'
 
 const testimonials = [
   ['Sarah M.', 'I’m blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece has exceeded my expectations.'],
   ['Alex K.', 'Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range is truly remarkable.'],
   ['James L.', 'The selection is excellent and the checkout was effortless. Everything arrived looking just like the photos.'],
+]
+const brandLogos = [
+  { src: versaceLogo, alt: 'Versace' },
+  { src: zaraLogo, alt: 'Zara' },
+  { src: gucciLogo, alt: 'Gucci' },
+  { src: pradaLogo, alt: 'Prada' },
+  { src: calvinKleinLogo, alt: 'Calvin Klein' },
 ]
 </script>
 
@@ -32,8 +44,8 @@ const testimonials = [
     </section>
 
     <section id="brands" class="bg-black py-9 text-white">
-      <div class="page-shell flex flex-wrap items-center justify-center gap-x-12 gap-y-7 text-2xl font-bold tracking-wider md:justify-between md:text-3xl">
-        <span class="font-serif">VERSACE</span><span>ZARA</span><span class="font-serif">GUCCI</span><span class="font-serif tracking-[.2em]">PRADA</span><span class="font-serif">Calvin Klein</span>
+      <div class="page-shell flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:justify-between">
+        <img v-for="brand in brandLogos" :key="brand.alt" :src="brand.src" :alt="brand.alt" class="h-7 w-auto max-w-[145px] object-contain sm:h-8 md:max-w-[180px]" />
       </div>
     </section>
 

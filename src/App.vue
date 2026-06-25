@@ -8,6 +8,12 @@ import logo from '@/assets/shopco.svg'
 const router = useRouter()
 const mobileOpen = ref(false)
 const search = ref('')
+const footerGroups = [
+  { title: 'Company', links: [{ label: 'About', slug: 'about' }, { label: 'Features', slug: 'features' }, { label: 'Works', slug: 'works' }, { label: 'Career', slug: 'career' }] },
+  { title: 'Help', links: [{ label: 'Customer Support', slug: 'support' }, { label: 'Delivery Details', slug: 'delivery' }, { label: 'Terms & Conditions', slug: 'terms' }, { label: 'Privacy Policy', slug: 'privacy' }] },
+  { title: 'FAQ', links: [{ label: 'Account', slug: 'account' }, { label: 'Manage Deliveries', slug: 'deliveries' }, { label: 'Orders', slug: 'orders' }, { label: 'Payments', slug: 'payments' }] },
+  { title: 'Resources', links: [{ label: 'Free eBooks', slug: 'ebooks' }, { label: 'Development Tutorial', slug: 'tutorial' }, { label: 'How to — Blog', slug: 'blog' }, { label: 'YouTube Playlist', slug: 'youtube' }] },
+]
 const submitSearch = () => {
   if (!search.value.trim()) return
   router.push({ path: '/search', query: { q: search.value } })
@@ -73,9 +79,9 @@ const submitSearch = () => {
         </section>
         <div class="grid gap-10 border-b border-black/10 pb-12 pt-8 sm:grid-cols-2 lg:grid-cols-5">
           <div class="lg:pr-8"><img :src="logo" alt="SHOP.CO" class="mb-6 h-7" /><p class="text-sm leading-6 text-black/60">We have clothes that suit your style and which you’re proud to wear. From women to men.</p></div>
-          <div v-for="group in [['Company','About','Features','Works','Career'],['Help','Customer Support','Delivery Details','Terms & Conditions','Privacy Policy'],['FAQ','Account','Manage Deliveries','Orders','Payments'],['Resources','Free eBooks','Development Tutorial','How to — Blog','YouTube Playlist']]" :key="group[0]">
-            <h3 class="mb-5 font-medium uppercase tracking-[.16em]">{{ group[0] }}</h3>
-            <a v-for="link in group.slice(1)" :key="link" class="mb-3 block text-sm text-black/60" href="#">{{ link }}</a>
+          <div v-for="group in footerGroups" :key="group.title">
+            <h3 class="mb-5 font-medium uppercase tracking-[.16em]">{{ group.title }}</h3>
+            <RouterLink v-for="link in group.links" :key="link.slug" class="mb-3 block text-sm text-black/60 transition hover:text-black" :to="`/info/${link.slug}`">{{ link.label }}</RouterLink>
           </div>
         </div>
         <div class="flex flex-col gap-4 pt-5 text-sm text-black/60 sm:flex-row sm:items-center sm:justify-between"><p>Shop.co © 2000–2026, All Rights Reserved</p><p class="text-xl">▣ VISA · ◉ MasterCard · PayPal · Pay</p></div>
