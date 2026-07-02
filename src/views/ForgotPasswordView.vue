@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ApiError, authService, type ValidationErrors } from '@/services/auth'
-import logo from '@/assets/shopco.svg'
+import BrandLogo from '@/components/BrandLogo.vue'
 
 const email = ref('')
 const submitting = ref(false)
@@ -34,9 +34,9 @@ const submit = async () => {
 <template>
   <section class="page-shell fade-up flex min-h-[560px] items-center justify-center py-12">
     <div class="w-full max-w-md">
-      <RouterLink to="/" class="mb-10 block w-fit"><img :src="logo" alt="SHOP.CO" class="h-7" /></RouterLink>
+      <RouterLink to="/" class="mb-10 block w-fit" aria-label="DRAPÉ home"><BrandLogo /></RouterLink>
       <h1 class="display-font text-4xl sm:text-5xl">RESET PASSWORD</h1>
-      <p class="mt-3 text-sm leading-6 text-black/60">Enter your email and we’ll send instructions if it matches a SHOP.CO account.</p>
+      <p class="mt-3 text-sm leading-6 text-black/60">Enter your email and we’ll send instructions if it matches a DRAPÉ account.</p>
       <form class="mt-9 space-y-5" novalidate @submit.prevent="submit">
         <div>
           <label for="forgot-email" class="mb-2 block text-sm font-medium">Email address</label>

@@ -60,7 +60,7 @@ const toApiError = (error: unknown): ApiError => {
   }
 
   if (!error.response) {
-    return new ApiError('We could not reach SHOP.CO. Please check your connection and try again.')
+    return new ApiError('We could not reach DRAPÉ. Please check your connection and try again.')
   }
 
   return new ApiError(

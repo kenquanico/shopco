@@ -83,7 +83,7 @@ const logout = async () => {
       <div class="space-y-6">
         <section class="rounded-[20px] bg-[#f0f0f0] p-6 sm:p-8">
           <h2 class="text-2xl font-bold">Orders</h2>
-          <p class="mt-3 text-sm leading-6 text-black/60">Your SHOP.CO orders will appear here.</p>
+          <p class="mt-3 text-sm leading-6 text-black/60">Your DRAPÉ orders will appear here.</p>
         </section>
         <section class="rounded-[20px] bg-[#f0f0f0] p-6 sm:p-8">
           <h2 class="text-2xl font-bold">Saved addresses</h2>

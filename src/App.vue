@@ -4,7 +4,8 @@ import { Menu, Search, ShoppingCart, UserRound, X } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
 import { cart } from '@/stores/cart'
 import { auth } from '@/stores/auth'
-import logo from '@/assets/shopco.svg'
+import logoMark from '@/assets/drape.svg'
+import paymentLogos from '@/assets/payment-logos.svg'
 
 const router = useRouter()
 const mobileOpen = ref(false)
@@ -26,6 +27,14 @@ const logout = async () => {
 }
 </script>
 
+<style scoped>
+.brand-name {
+  font-family: "Bodoni Moda", Didot, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+</style>
+
 <template>
   <div class="min-h-screen bg-white">
     <div class="bg-black py-2.5 text-center text-xs text-white sm:text-sm">
@@ -36,7 +45,10 @@ const logout = async () => {
     <header class="border-b border-black/10 bg-white">
       <div class="page-shell flex h-[72px] items-center gap-4 lg:h-24 lg:gap-10">
         <button class="lg:hidden" aria-label="Open menu" @click="mobileOpen = true"><Menu :size="23" /></button>
-        <RouterLink to="/" aria-label="SHOP.CO home"><img :src="logo" alt="SHOP.CO" class="h-6 w-auto lg:h-7" /></RouterLink>
+        <RouterLink to="/" aria-label="DRAPÉ home" class="flex shrink-0 items-center gap-2">
+          <img :src="logoMark" alt="" class="h-8 w-8 rounded-full bg-black p-1.5 lg:h-9 lg:w-9" />
+          <span class="brand-name text-xl lg:text-2xl">DRAPÉ</span>
+        </RouterLink>
         <nav class="hidden items-center gap-7 text-sm lg:flex">
           <RouterLink to="/category/casual" class="hover:opacity-55">Shop⌄</RouterLink>
           <RouterLink to="/category/sale" class="hover:opacity-55">On Sale</RouterLink>
@@ -61,7 +73,7 @@ const logout = async () => {
     <div v-if="mobileOpen" class="fixed inset-0 z-50 bg-black/35" @click.self="mobileOpen = false">
       <aside class="h-full w-[82%] max-w-sm bg-white p-6 shadow-2xl">
         <div class="mb-10 flex items-center justify-between">
-          <img :src="logo" alt="SHOP.CO" class="h-6" />
+          <RouterLink to="/" aria-label="DRAPÉ home" class="flex items-center gap-2" @click="mobileOpen = false"><img :src="logoMark" alt="" class="h-8 w-8 rounded-full bg-black p-1.5" /><span class="brand-name text-xl">DRAPÉ</span></RouterLink>
           <button @click="mobileOpen = false"><X /></button>
         </div>
         <nav class="flex flex-col gap-6 text-lg" @click="mobileOpen = false">
@@ -92,13 +104,16 @@ const logout = async () => {
           </div>
         </section>
         <div class="grid gap-10 border-b border-black/10 pb-12 pt-8 sm:grid-cols-2 lg:grid-cols-5">
-          <div class="lg:pr-8"><img :src="logo" alt="SHOP.CO" class="mb-6 h-7" /><p class="text-sm leading-6 text-black/60">We have clothes that suit your style and which you’re proud to wear. From women to men.</p></div>
+          <div class="lg:pr-8"><RouterLink to="/" aria-label="DRAPÉ home" class="mb-6 flex w-fit items-center gap-2"><img :src="logoMark" alt="" class="h-9 w-9 rounded-full bg-black p-1.5" /><span class="brand-name text-2xl">DRAPÉ</span></RouterLink><p class="text-sm leading-6 text-black/60">Considered clothing for every expression of personal style.</p></div>
           <div v-for="group in footerGroups" :key="group.title">
             <h3 class="mb-5 font-medium uppercase tracking-[.16em]">{{ group.title }}</h3>
             <RouterLink v-for="link in group.links" :key="link.slug" class="mb-3 block text-sm text-black/60 transition hover:text-black" :to="`/info/${link.slug}`">{{ link.label }}</RouterLink>
           </div>
         </div>
-        <div class="flex flex-col gap-4 pt-5 text-sm text-black/60 sm:flex-row sm:items-center sm:justify-between"><p>Shop.co © 2000–2026, All Rights Reserved</p><p class="text-xl">▣ VISA · ◉ MasterCard · PayPal · Pay</p></div>
+        <div class="flex flex-col gap-4 pt-5 text-sm text-black/60 sm:flex-row sm:items-center sm:justify-between">
+          <p>DRAPÉ © 2000–2026, All Rights Reserved</p>
+          <img :src="paymentLogos" alt="Accepted payment methods" class="h-auto w-[220px] sm:w-[300px]" />
+        </div>
       </div>
     </footer>
   </div>

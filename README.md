@@ -1,4 +1,4 @@
-# SHOP.CO
+# DRAPÉ
 
 Vue storefront with a Laravel, PostgreSQL, and Sanctum cookie-authentication backend.
 

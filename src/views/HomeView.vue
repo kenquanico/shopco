@@ -9,8 +9,8 @@ import pradaLogo from '@/assets/brands/prada.svg'
 import calvinKleinLogo from '@/assets/brands/calvin-klein.svg'
 
 const testimonials = [
-  ['Sarah M.', 'I’m blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece has exceeded my expectations.'],
-  ['Alex K.', 'Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range is truly remarkable.'],
+  ['Sarah M.', 'I’m blown away by the quality and style of the clothes I received from DRAPÉ. From casual wear to elegant dresses, every piece has exceeded my expectations.'],
+  ['Alex K.', 'Finding clothes that align with my personal style used to be a challenge until I discovered DRAPÉ. The range is truly remarkable.'],
   ['James L.', 'The selection is excellent and the checkout was effortless. Everything arrived looking just like the photos.'],
 ]
 const brandLogos = [

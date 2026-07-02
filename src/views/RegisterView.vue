@@ -4,7 +4,7 @@ import { Eye, EyeOff } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
 import { ApiError, type ValidationErrors } from '@/services/auth'
 import { auth } from '@/stores/auth'
-import logo from '@/assets/shopco.svg'
+import BrandLogo from '@/components/BrandLogo.vue'
 
 const router = useRouter()
 const form = ref({
@@ -45,9 +45,9 @@ const submit = async () => {
 <template>
   <section class="page-shell fade-up flex min-h-[700px] items-center justify-center py-12">
     <div class="w-full max-w-lg">
-      <RouterLink to="/" class="mb-10 block w-fit" aria-label="SHOP.CO home"><img :src="logo" alt="SHOP.CO" class="h-7" /></RouterLink>
+      <RouterLink to="/" class="mb-10 block w-fit" aria-label="DRAPÉ home"><BrandLogo /></RouterLink>
       <h1 class="display-font text-4xl sm:text-5xl">CREATE ACCOUNT</h1>
-      <p class="mt-3 text-sm text-black/60">Join SHOP.CO to make checkout and account management easier.</p>
+      <p class="mt-3 text-sm text-black/60">Join DRAPÉ to make checkout and account management easier.</p>
 
       <form class="mt-9 grid gap-5 sm:grid-cols-2" novalidate @submit.prevent="submit">
         <div>
