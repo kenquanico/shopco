@@ -27,14 +27,6 @@ const logout = async () => {
 }
 </script>
 
-<style scoped>
-.brand-name {
-  font-family: "Bodoni Moda", Didot, "Times New Roman", serif;
-  font-weight: 600;
-  letter-spacing: .08em;
-}
-</style>
-
 <template>
   <div class="min-h-screen bg-white">
     <div class="bg-black py-2.5 text-center text-xs text-white sm:text-sm">
@@ -45,9 +37,8 @@ const logout = async () => {
     <header class="border-b border-black/10 bg-white">
       <div class="page-shell flex h-[72px] items-center gap-4 lg:h-24 lg:gap-10">
         <button class="lg:hidden" aria-label="Open menu" @click="mobileOpen = true"><Menu :size="23" /></button>
-        <RouterLink to="/" aria-label="DRAPÉ home" class="flex shrink-0 items-center gap-2">
-          <img :src="logoMark" alt="" class="h-8 w-8 rounded-full bg-black p-1.5 lg:h-9 lg:w-9" />
-          <span class="brand-name text-xl lg:text-2xl">DRAPÉ</span>
+        <RouterLink to="/" aria-label="DRAPÉ home" class="flex shrink-0 items-center">
+          <img :src="logoMark" alt="DRAPÉ" class="h-10 w-10 object-contain lg:h-12 lg:w-12" />
         </RouterLink>
         <nav class="hidden items-center gap-7 text-sm lg:flex">
           <RouterLink to="/category/casual" class="hover:opacity-55">Shop⌄</RouterLink>
@@ -73,7 +64,7 @@ const logout = async () => {
     <div v-if="mobileOpen" class="fixed inset-0 z-50 bg-black/35" @click.self="mobileOpen = false">
       <aside class="h-full w-[82%] max-w-sm bg-white p-6 shadow-2xl">
         <div class="mb-10 flex items-center justify-between">
-          <RouterLink to="/" aria-label="DRAPÉ home" class="flex items-center gap-2" @click="mobileOpen = false"><img :src="logoMark" alt="" class="h-8 w-8 rounded-full bg-black p-1.5" /><span class="brand-name text-xl">DRAPÉ</span></RouterLink>
+          <RouterLink to="/" aria-label="DRAPÉ home" class="flex items-center" @click="mobileOpen = false"><img :src="logoMark" alt="DRAPÉ" class="h-11 w-11 object-contain" /></RouterLink>
           <button @click="mobileOpen = false"><X /></button>
         </div>
         <nav class="flex flex-col gap-6 text-lg" @click="mobileOpen = false">
@@ -104,7 +95,7 @@ const logout = async () => {
           </div>
         </section>
         <div class="grid gap-10 border-b border-black/10 pb-12 pt-8 sm:grid-cols-2 lg:grid-cols-5">
-          <div class="lg:pr-8"><RouterLink to="/" aria-label="DRAPÉ home" class="mb-6 flex w-fit items-center gap-2"><img :src="logoMark" alt="" class="h-9 w-9 rounded-full bg-black p-1.5" /><span class="brand-name text-2xl">DRAPÉ</span></RouterLink><p class="text-sm leading-6 text-black/60">Considered clothing for every expression of personal style.</p></div>
+          <div class="lg:pr-8"><RouterLink to="/" aria-label="DRAPÉ home" class="mb-6 flex w-fit items-center"><img :src="logoMark" alt="DRAPÉ" class="h-12 w-12 object-contain" /></RouterLink><p class="text-sm leading-6 text-black/60">Considered clothing for every expression of personal style.</p></div>
           <div v-for="group in footerGroups" :key="group.title">
             <h3 class="mb-5 font-medium uppercase tracking-[.16em]">{{ group.title }}</h3>
             <RouterLink v-for="link in group.links" :key="link.slug" class="mb-3 block text-sm text-black/60 transition hover:text-black" :to="`/info/${link.slug}`">{{ link.label }}</RouterLink>
